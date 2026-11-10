@@ -13,6 +13,8 @@
   --primary: #ed1c24;
   --primary-dark: #7a0f14;
   --primary-hover: #ff2b35;
+  --primary-muted: rgba(237, 28, 36, 0.12);
+  --primary-border: rgba(237, 28, 36, 0.4);
 
   --text-main: #ffffff;
   --text-secondary: #d6d6d6;
@@ -25,6 +27,16 @@
 
   --color-success: #2ecc71;
   --color-success-muted: rgba(46, 204, 113, 0.2);
+
+  /* Financial state colors — Module 2 */
+  --color-unverified: #f59e0b;
+  --color-unverified-muted: rgba(245, 158, 11, 0.15);
+  --color-pending: #3b82f6;
+  --color-pending-muted: rgba(59, 130, 246, 0.15);
+  --color-available: #10b981;
+  --color-available-muted: rgba(16, 185, 129, 0.15);
+  --color-paid: #6b7280;
+  --color-paid-muted: rgba(107, 114, 128, 0.15);
 
   /* Chart palette — all charts pull from these */
   --chart-2: #7a0f14;
@@ -49,6 +61,8 @@
   --card-gradient: linear-gradient(135deg, #ffffff, #f9f9f9);
 
   --primary-dark: #ed1c24;
+  --primary-muted: rgba(237, 28, 36, 0.08);
+  --primary-border: rgba(237, 28, 36, 0.3);
   --sidebar-nav-bg: #ffffff;
   --sidebar-border: #e5e5e5;
 
@@ -63,6 +77,16 @@
 
   --shadow: 0 0 20px rgba(0, 0, 0, 0.08);
   --card-gradient: linear-gradient(135deg, #ffffff, #f8f8f8);
+
+  /* Financial state colors — light mode */
+  --color-unverified: #d97706;
+  --color-unverified-muted: rgba(217, 119, 6, 0.15);
+  --color-pending: #2563eb;
+  --color-pending-muted: rgba(37, 99, 235, 0.15);
+  --color-available: #059669;
+  --color-available-muted: rgba(5, 150, 105, 0.15);
+  --color-paid: #4b5563;
+  --color-paid-muted: rgba(75, 85, 99, 0.15);
 }
 
 * {
@@ -422,4 +446,278 @@ p, span, small {
   * {
     box-shadow: none !important;
   }
+}
+
+/* =========================
+   FINANCIAL STATE CARDS
+============================= */
+
+.financial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.financial-card .text-2xl {
+  letter-spacing: -0.5px;
+}
+
+/* =========================
+   AUTH PAGES
+============================= */
+
+.auth-page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-main);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 36px 32px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+.auth-card input,
+.auth-card select {
+  min-height: 44px;
+  border-color: var(--border);
+  background-color: var(--bg-secondary);
+  color: var(--text-main);
+}
+
+.auth-card input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+  border-color: var(--primary);
+  outline: 2px solid var(--primary-muted);
+  outline-offset: 1px;
+}
+
+.auth-card input.auth-input-error {
+  border-color: var(--primary);
+}
+
+.auth-card .auth-submit {
+  min-height: 48px;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+}
+
+.auth-card .auth-submit:hover:not(:disabled) {
+  border-color: var(--primary-hover);
+  background: var(--primary-hover);
+}
+
+.auth-card .auth-submit:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.auth-card .auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 8px;
+  letter-spacing: -0.5px;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.auth-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 16px;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+  }
+}
+
+/* =========================
+   ADMIN SECTION
+============================= */
+
+.admin-section {
+  padding: 32px;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.admin-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.admin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.admin-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 12px 8px;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-table td {
+  padding: 12px 8px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-table tr:hover {
+  background: var(--row-hover);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background: var(--color-available-muted);
+  color: var(--color-available);
+}
+
+.status-inactive {
+  background: var(--color-paid-muted);
+  color: var(--color-paid);
+}
+
+.status-pending {
+  background: var(--color-pending-muted);
+  color: var(--color-pending);
+}
+
+/* =========================
+   EMPTY STATE
+============================= */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-muted);
+}
+
+.empty-state svg {
+  width: 64px;
+  height: 64px;
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0;
 }

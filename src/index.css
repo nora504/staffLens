@@ -64,6 +64,24 @@ body {
   margin: 0;
 }
 
+.worklane-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  background: #f0f3e8;
+}
+
+.worklane-loading span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 14px 14px 14px 5px;
+  background: #d9e8d8;
+  color: #355847;
+  font: 800 20px/1 system-ui, sans-serif;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
